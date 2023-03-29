@@ -365,7 +365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b186f9485a0828b468f98fe846ae1a68, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b186f9485a0828b468f98fe846ae1a68, type: 3}
       propertyPath: m_LocalPosition.x
@@ -438,7 +438,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2e2aaa6c7d4404fa6d6031838ad831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 5332286786492888184, guid: 4f3b0aa1c11ddf948afab464dcb775ad, type: 3}
+  obstaclePrefab:
+  - {fileID: 5332286786492888184, guid: 4f3b0aa1c11ddf948afab464dcb775ad, type: 3}
+  - {fileID: 884586111595163699, guid: ac6a6b74ed968ea47af3f3ba4a1d5bb3, type: 3}
 --- !u!4 &370721781
 Transform:
   m_ObjectHideFlags: 0
@@ -452,7 +454,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &534669902
 GameObject:
@@ -789,6 +791,7 @@ MonoBehaviour:
   gravityModifier: 2.5
   isOnGround: 1
   gameOver: 0
+  hasOneMoreJump: 0
 --- !u!65 &1354687134
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -971,7 +974,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d20e76e26c075e94ebb61b7c0784ec16, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
