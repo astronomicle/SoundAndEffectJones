@@ -23,6 +23,17 @@ public class MoveLeft : MonoBehaviour
         if(transform.position.x < leftBound && gameObject.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
+            playerControllerScript.score += 1;
+            Debug.Log(playerControllerScript.score + " pts");
+        }
+
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            speed = 30;
+        }
+        else
+        {
+            speed = 20;
         }
     }
 }

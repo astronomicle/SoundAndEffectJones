@@ -13,9 +13,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip crashSound;
     public float jumpForce = 10;
     public float gravityModifier;
-    public bool isOnGround = true;
     public bool gameOver;
-    public bool hasOneMoreJump;
+    private int jumpCounter = 0;
+    public int score;
 
     void Start()
     {
@@ -23,22 +23,27 @@ public class PlayerController : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
         Physics.gravity *= gravityModifier;
+        score = 0;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && (isOnGround || hasOneMoreJump) && !gameOver)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCounter < 2 && !gameOver)
         {
+            jumpCounter += 1;
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isOnGround = false;
             playerAnim.SetTrigger("Jump_trig");
             dirtParticle.Stop();
             playerAudio.PlayOneShot(jumpSound, 1.0f);
+        }
 
-            if (!isOnGround)
-            {
-                hasOneMoreJump = false;
-            }
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            playerAnim.speed = 2.5f;
+        }
+        else
+        {
+            playerAnim.speed = 1.5f;
         }
     }
 
@@ -48,8 +53,7 @@ public class PlayerController : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Ground"))
         {
-            isOnGround = true;
-            hasOneMoreJump = false;
+            jumpCounter = 0;
             dirtParticle.Play();
         }
         else if(collision.gameObject.CompareTag("Obstacle"))
